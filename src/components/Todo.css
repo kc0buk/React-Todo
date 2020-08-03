@@ -83,13 +83,10 @@ button {
   color: white;
   font-size: 16px;
   padding: 6px 14px;
+  margin-top: 16px;
 }
 
 input::placeholder {
   color: white;
   opacity: 1;
-}
-
-.clear-btn {
-  margin-top: 16px;
 }

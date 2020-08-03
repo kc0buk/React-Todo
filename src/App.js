@@ -46,11 +46,17 @@ class App extends React.Component {
     })
   }
 
+  clearCompleted = completed => {
+    this.setState({
+      taskList: this.state.taskList.filter(item => item.completed === false)
+    })
+  }
+
   /* addItem takes in the new task as provided by the input, creates the new object setting the input to task, adding an id of the current date and setting completed to false, then sets state to the current taskList array, adding newItem at the end */
   addItem = itemName => {
     const newItem = {
       task: itemName,
-      id: new Date(),
+      id: Date.now(),
       completed: false
     }
     this.setState({
@@ -61,15 +67,24 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <div>
         <h2>Welcome to your Todo App!</h2>
+        </div>
         {/* TodoList renders the completed todo list based on current state. It expect state to come from taskList and the toggleItem function to "cross off" an item from the list */}
+        <div>
         <TodoList 
           taskList = {this.state.taskList}
           toggleItem={this.toggleItem}
         />
+        </div>
+        <div>
         <TodoForm 
           addItem={this.addItem}
         />
+        </div>
+        <div>
+            <button onClick={this.clearCompleted}>Clear Completed Items</button>
+            </div>
       </div>
     );
   }
